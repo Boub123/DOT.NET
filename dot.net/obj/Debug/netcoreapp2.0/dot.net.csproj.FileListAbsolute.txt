@@ -1,0 +1,11 @@
+/Users/yateraboubacar/Desktop/COUR_.NET/Dotnet/DOT.NET/dot.net/bin/Debug/netcoreapp2.0/dot.net.deps.json
+/Users/yateraboubacar/Desktop/COUR_.NET/Dotnet/DOT.NET/dot.net/bin/Debug/netcoreapp2.0/dot.net.runtimeconfig.json
+/Users/yateraboubacar/Desktop/COUR_.NET/Dotnet/DOT.NET/dot.net/bin/Debug/netcoreapp2.0/dot.net.runtimeconfig.dev.json
+/Users/yateraboubacar/Desktop/COUR_.NET/Dotnet/DOT.NET/dot.net/bin/Debug/netcoreapp2.0/dot.net.dll
+/Users/yateraboubacar/Desktop/COUR_.NET/Dotnet/DOT.NET/dot.net/bin/Debug/netcoreapp2.0/dot.net.pdb
+/Users/yateraboubacar/Desktop/COUR_.NET/Dotnet/DOT.NET/dot.net/obj/Debug/netcoreapp2.0/dot.net.csprojAssemblyReference.cache
+/Users/yateraboubacar/Desktop/COUR_.NET/Dotnet/DOT.NET/dot.net/obj/Debug/netcoreapp2.0/dot.net.csproj.CoreCompileInputs.cache
+/Users/yateraboubacar/Desktop/COUR_.NET/Dotnet/DOT.NET/dot.net/obj/Debug/netcoreapp2.0/dot.net.AssemblyInfoInputs.cache
+/Users/yateraboubacar/Desktop/COUR_.NET/Dotnet/DOT.NET/dot.net/obj/Debug/netcoreapp2.0/dot.net.AssemblyInfo.cs
+/Users/yateraboubacar/Desktop/COUR_.NET/Dotnet/DOT.NET/dot.net/obj/Debug/netcoreapp2.0/dot.net.dll
+/Users/yateraboubacar/Desktop/COUR_.NET/Dotnet/DOT.NET/dot.net/obj/Debug/netcoreapp2.0/dot.net.pdb
