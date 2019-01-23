@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 namespace TD_console
 {
     public class TD1
@@ -40,7 +41,7 @@ namespace TD_console
         {
             int resultat = 0;
             // Ne rien modifier au dessus de ce commentaire
-
+            resultat = a + b;
             // Ne rien modifier au dessous de ce commentaire
             return resultat;
         }
@@ -49,7 +50,10 @@ namespace TD_console
         {
             string chiffres = "";
             // Ne rien modifier au dessus de ce commentaire
-
+            for(byte i = 0 ; i < 10; i++)
+            {
+            chiffres += i;
+            }
             // Ne rien modifier au dessous de ce commentaire
             return chiffres;
         }
@@ -58,7 +62,11 @@ namespace TD_console
         {
             string alphabet = "";
             // Ne rien modifier au dessus de ce commentaire
-
+            char i = 'a';
+            while (i <= 'z'){
+                alphabet += i;
+                i++;
+            } 
             // Ne rien modifier au dessous de ce commentaire
             return alphabet;
         }
@@ -67,7 +75,12 @@ namespace TD_console
         {
             string alphabet = "";
             // Ne rien modifier au dessus de ce commentaire
-
+            char i = 'z';
+            while (i >= 'a')
+            {
+                alphabet += i;
+                i--;
+            }
             // Ne rien modifier au dessous de ce commentaire
             return alphabet;
         }
@@ -76,7 +89,10 @@ namespace TD_console
         {
             string alphabet = "";
             // Ne rien modifier au dessus de ce commentaire
-
+            for(char i = 'A'; i<='Z'; i++)
+            {
+                alphabet += i;
+            }
             // Ne rien modifier au dessous de ce commentaire
             return alphabet;
         }
@@ -85,7 +101,10 @@ namespace TD_console
         {
             string alphabet = "";
             // Ne rien modifier au dessus de ce commentaire
-
+            for (char i = Convert.ToChar(c); i<= 'z'; i++)
+            {
+                alphabet += i;
+            }
             // Ne rien modifier au dessous de ce commentaire
             return alphabet;
         }
@@ -94,7 +113,7 @@ namespace TD_console
         {
             string newSentence = "";
             // Ne rien modifier au dessus de ce commentaire
-
+            newSentence = sentence.ToLower();
             // Ne rien modifier au dessous de ce commentaire
             return newSentence;
         }
@@ -105,7 +124,7 @@ namespace TD_console
         {
             string newSentence = "";
             // Ne rien modifier au dessus de ce commentaire
-
+            newSentence = sentence.ToUpper();
             // Ne rien modifier au dessous de ce commentaire
             return newSentence;
         }
@@ -114,6 +133,19 @@ namespace TD_console
         {
             string newSentence = "";
             // Ne rien modifier au dessus de ce commentaire
+            foreach(char i in sentence)
+            {
+                if (Char.IsLower(i))
+                {
+                    newSentence += Char.ToUpper(i);
+                }
+                else
+                {
+                    newSentence += Char.ToLower(i);
+                }
+                 string x = Char.ToString(i);
+               // Console.WriteLine(" hhhh" + i);
+            }
 
             // Ne rien modifier au dessous de ce commentaire
             return newSentence;
@@ -122,10 +154,22 @@ namespace TD_console
         public static string Decompose_string(string sentence)
         {
             string decompose = "";
-            // Ne rien modifier au dessus de ce commentaire
-
+           // Ne rien modifier au dessus de ce commentaire
+            for(int i = 0; i < sentence.Length; i++)
+            { 
+                if (i < sentence.Length-1)
+                { 
+                    decompose += char.ToString(sentence[i]) + "\n";
+                }
+                else 
+                {
+                    decompose += char.ToString(sentence[i]);
+                }
+            }
+                      
             // Ne rien modifier au dessous de ce commentaire
             return decompose;
+                       
         }
 
         public static long River_next(long n)
@@ -133,6 +177,16 @@ namespace TD_console
             long river = 0;
             // Ne rien modifier au dessus de ce commentaire
 
+            river = n;
+            string chaine =  n.ToString();
+            for(int i = 0; i< chaine.Length; i++)
+            {
+               //Console.WriteLine(river);
+                long j = int.Parse( "" + chaine[i] );
+                //Console.WriteLine(j);
+                river += j;
+                //Console.WriteLine(river);
+            }
             // Ne rien modifier au dessous de ce commentaire
             return river;
         }
@@ -141,6 +195,13 @@ namespace TD_console
         {
             long meet = 0;
             // Ne rien modifier au dessus de ce commentaire
+            while(a != b)
+            {
+                if (a < b) a = River_next(a);
+                else b = River_next(b);
+
+                if(a == b) meet = a; 
+            }
 
             // Ne rien modifier au dessous de ce commentaire
             return meet;
@@ -150,7 +211,11 @@ namespace TD_console
         {
             bool isSequence = true;
             // Ne rien modifier au dessus de ce commentaire
-
+            while( river < sequence)
+            {
+                river = River_next(river);
+                if (river > sequence) isSequence = false;
+            }
             // Ne rien modifier au dessous de ce commentaire
             return isSequence;
         }
