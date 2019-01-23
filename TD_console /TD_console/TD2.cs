@@ -37,6 +37,19 @@ namespace TD_console
             string alphabet = "";
             // Ne rien modifier au dessus de ce commentaire
 
+            for (char i = 'a'; i <= 'z'; i++)
+            {
+                if (i % 2 != 0) 
+                {
+                    alphabet += Char.ToLower(i);
+                }
+                else
+                {
+                    alphabet += Char.ToUpper(i);
+                }
+            }
+
+            //on peut aussi metttre on peut l
             // Ne rien modifier au dessous de ce commentaire
             return alphabet;
         }
@@ -45,6 +58,17 @@ namespace TD_console
         {
             int position = 0;
             // Ne rien modifier au dessus de ce commentaire
+            // position = sentence.IndexOf(search);
+
+            for (int i = 0; i <= sentence.Length; i++) 
+            
+            { 
+                if(sentence[i]== search)
+                {
+                    position += i;
+                    break;
+                }
+            }
 
             // Ne rien modifier au dessous de ce commentaire
             return position;
@@ -55,6 +79,18 @@ namespace TD_console
             string newSentence = "";
             // Ne rien modifier au dessus de ce commentaire
 
+            //marche mais il y'a un carractére null
+            //newSentence =  sentence.Replace(search, Char.Parse(Char.ConvertFromUtf32(0)));
+
+            foreach (char c in sentence)
+
+            {
+                if (c != search)
+                {
+                    newSentence += c;
+                }
+
+            }
             // Ne rien modifier au dessous de ce commentaire
             return newSentence;
         }
@@ -63,6 +99,25 @@ namespace TD_console
         {
             string sequence = "";
             // Ne rien modifier au dessus de ce commentaire
+            long nouveaurive = river;
+            sequence = nouveaurive + " ; ";
+
+            while (nouveaurive < max)
+            {
+                nouveaurive = TD1.River_next(nouveaurive);
+
+                if(nouveaurive < max)
+                {
+                    sequence += nouveaurive + " ; ";
+                }
+                else
+                {
+                    sequence += nouveaurive + ".";
+                }
+
+
+            }
+
 
             // Ne rien modifier au dessous de ce commentaire
             return sequence;
@@ -108,7 +163,25 @@ namespace TD_console
         {
             string pyramide = "";
             // Ne rien modifier au dessus de ce commentaire
+            for (int i = 1; i <= height; i++)
+            {
+                for (int j = i; j < height; j++)
+                {
+                    //pyramide += "h";
+                    pyramide += " ";
 
+                }
+                pyramide += "/";
+                for (int k = 1; k <= 2 * i - 1; k++)
+                {
+                    pyramide += "*";
+                }
+                pyramide += "\\";
+                if (i != height)
+                {
+                    pyramide += "\n";
+                }
+            }
             // Ne rien modifier au dessous de ce commentaire
             return pyramide;
         }
