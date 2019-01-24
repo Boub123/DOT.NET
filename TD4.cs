@@ -1,4 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
+/*
+using System.Collections.Generic.ICollection<T>;
+using System.Collections.Generic.IEnumerable<T>;
+using System.Collections.Generic.IList<T>;
+using System.Collections.Generic.IReadOnlyCollection<T>;
+using System.Collections.Generic.IReadOnlyList<T>;
+using System.Collections.IList;
+*/
+
+
 namespace TD_console
 {
     public class TD4
@@ -114,47 +125,81 @@ namespace TD_console
             return newSentence;
         }
 
-        /*
-        public static int[] ArrayFibonacci_max_sequence(long max)
-        {
-            int[] sequence = { 0,1 };
-            // Ne rien modifier au dessus de ce commentaire
-            int i = 1;
-            int push = 0;
-            while(push < max)
-            {
-                push = sequence[i - 1] + sequence[i];
-                sequence[i + 1] += push;
-                i++;
-            }
 
-            foreach (int items in sequence)
-            {
-                Console.WriteLine(items);
-            }
+        public static List<int> ArrayFibonacci_max_sequence(long max)
+        {
+           
+            List<int> sequence = new List<int>();
+            sequence.Add(0);
+            sequence.Add(1);
+            // sequence = [0,1];
+            
+             // Ne rien modifier au dessus de ce commentaire
+             int i = 1;
+             int push = 0;
+             while(push <= max)
+             {
+                 push = sequence[i - 1] + sequence[i];
+                 sequence.Add(push);
+                 i++;
+             }
+
             // Ne rien modifier au dessous de ce commentaire
             return sequence;
         }
-        */
+
+        public static bool equal(long a, long b)
+        {
+            Console.WriteLine("a: "+a+" b: "+b);
+            bool x = (a == b);
+            Console.WriteLine("x: "+x);
+            return x;
+        }
+
+
 
         public static bool Fibonacci_is_sequence(long sequence)
         {
             bool isSequence = true;
             // Ne rien modifier au dessus de ce commentaire
-           //int[] arrayFibonnci = ArrayFibonacci_max_sequence(sequence);
-            //int x = 1;
-            //Array arrayTest = [0 2, 3, 1];
-            //bool test = arrayTest.Find(x);
-            //Console.WriteLine(arrayFibonnci);
-                    
+            List<int> arrayFibonaci = ArrayFibonacci_max_sequence(sequence);
+            
+            if (arrayFibonaci.Find(e => e == sequence) == sequence) isSequence = true;
+            else isSequence = false;
+
+            // Console.WriteLine("test: " + arrayFibonaci.Find(e => equal(e, sequence)));
+
+            /* foreach (int e in arrayFibonaci)
+             {
+                 if (e != sequence)
+                 {
+                     isSequence = false;
+                 }
+                 else
+                 {
+                     isSequence = true;
+                     break;
+                 }
+                 Console.WriteLine("e: " + e + " sequence: " + sequence + "test: " + (e == sequence));
+             }
+             */
+
+
             // Ne rien modifier au dessous de ce commentaire
             return isSequence;
         }
 
-        public static long Fibonacci_previous(long n)
+
+            public static long Fibonacci_previous(long n)
         {
             long fibonacci = 0;
             // Ne rien modifier au dessus de ce commentaire
+            List<int> arrayFibonaci = ArrayFibonacci_max_sequence(n);
+
+            int i = arrayFibonaci.FindIndex(e => e == n);
+            fibonacci = arrayFibonaci[i - 1];
+
+            //Console.WriteLine(arrayFibonaci[i-1]);
 
             // Ne rien modifier au dessous de ce commentaire
             return fibonacci;
@@ -164,7 +209,10 @@ namespace TD_console
         {
             long fibonacci = 0;
             // Ne rien modifier au dessus de ce commentaire
+            List<int> arrayFibonaci = ArrayFibonacci_max_sequence(n);
 
+            int i = arrayFibonaci.FindIndex(e => e == n);
+            fibonacci = arrayFibonaci[i + 1];
             // Ne rien modifier au dessous de ce commentaire
             return fibonacci;
         }
@@ -173,7 +221,19 @@ namespace TD_console
         {
             string sequence = "";
             // Ne rien modifier au dessus de ce commentaire
+            List<int> arrayFibonaci = ArrayFibonacci_max_sequence(max);
+            //Console.WriteLine("length: " + arrayFibonaci.Count);
+            int i = 0;
+            foreach (int e in arrayFibonaci)
+            {
+                //Console.WriteLine("i: " + i);
+                if (i == 0) sequence += e + " ;";
+                else if (i == arrayFibonaci.Count-1) sequence +=" " + e + ".";
+                else sequence += " " + e + " ;";
 
+                i++;
+                
+            }
             // Ne rien modifier au dessous de ce commentaire
             return sequence;
         }
@@ -182,7 +242,34 @@ namespace TD_console
         {
             string sequence = "";
             // Ne rien modifier au dessus de ce commentaire
+            int prev = 0;
+            int push = 0;
+            int temp = 0;
+            for (int i = 0; i < n; i++)
+            {
+                //Console.WriteLine("i: "+i);
+                if (i == 0)
+                {
 
+                    sequence += push + " ;";
+                    temp = prev;
+                    prev = push;  
+                    push += 1;
+                }
+                else if (i < n-1)
+                {
+                    //Console.WriteLine("prev: " + prev + " push: " + push);                  
+                    sequence += " " + push + " ;";
+                    temp = prev;
+                    prev = push;
+                    push += temp;
+                }
+
+                else
+                {
+                    sequence += " " + push + ".";
+                }  
+            }
             // Ne rien modifier au dessous de ce commentaire
             return sequence;
         }
@@ -191,7 +278,22 @@ namespace TD_console
         {
             string sequence = "";
             // Ne rien modifier au dessus de ce commentaire
+            List<int> arrayFibonaci = ArrayFibonacci_max_sequence(max);
+            //arrayFibonaci.ForEach(Console.WriteLine);
+            int i = 1;
+            foreach (int e in arrayFibonaci)
+            {
+                //Console.WriteLine(" min: " + min + " i: "+ i + " max : " + max +" "+ (min <= i && i <= max) + " e: " + e);
 
+                if (min <= i  && i <= max)
+                {
+                    if (i == min) sequence += e + " ;";
+                    else if (i == arrayFibonaci.Count - 1) sequence += " " + e + ".";
+                    else sequence += " " + e + " ;";
+                }
+
+                i++;
+            }
             // Ne rien modifier au dessous de ce commentaire
             return sequence;
         }
